@@ -1,0 +1,9 @@
+version: "3"
+services: 
+  texlive:
+    image: sarisia/texlive:2019
+    volumes:
+      - .:/workspace:cached
+    working_dir: /workspace
+    entrypoint: []
+    command: [ "make", "build" ]

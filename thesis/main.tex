@@ -1,0 +1,95 @@
+\documentclass[a4,12pt,onecolumn,oneside,final]{report}
+
+%\usepackage{gthesis}
+\usepackage{gthesis_myown}
+\usepackage{listings}
+\usepackage{amsmath,amsthm,amssymb,ascmac}
+\usepackage{fancybox}
+\usepackage{slashbox}
+%\usepackage[dviout]{color,graphics}
+%\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+%\usepackage{upgreek}
+\usepackage{bm}
+\usepackage{wrapfig}
+
+
+\usepackage[dvipdfm]{graphicx}
+
+
+\usepackage{here}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{my-macros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\年度{令和3年度}
+%\提出年月{平成30年7月}
+\提出年月{令和3年8月}
+
+\題名{A Novel Oversampling Method and \\
+Its Application to Real Data}
+\梗概題名{Novel Oversampling Method and \\
+Its Application to Real Data}
+%\題名{楽に卒業する方法に関する基礎的研究\\
+%			--- そもそもそれは可能か？ ---}
+%\梗概題名{楽に卒業する方法に関する基礎的研究\\
+%			--- そもそもそれは可能か？ ---}
+
+\指導教員名A{植松 友彦}
+\職名A{教授}
+
+\指導教員名B{Daniel Berrar}
+\職名B{准教授}
+
+\所属学科{情報通信系}{}
+\学籍番号{18\_15997}
+\氏名{山田遼太}
+
+\内容梗概{\input{abstract}}
+
+
+\begin{document}
+\newcommand{\argmax}{\mathop{\rm argmax}\limits}
+\newcommand{\beeq}{\begin{eqnarray}}
+\newcommand{\eneq}{\end{eqnarray}}
+
+% ----------------------------------------------------------------------
+% 表紙
+\maketitle
+% ----------------------------------------------------------------------
+% 目次
+\setcounter{page}{1}
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\clearpage
+% ----------------------------------------------------------------------
+% 内容
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+\input{1_introduction}
+\input{2_materials_and_methods}
+\input{3_results}
+\input{4_discussion}
+\input{5_conclusion}
+
+% \input{problem_statement}
+% \input{material}
+% \input{evaluation}
+% \input{result}
+% \input{discussion}
+% \input{conclusion}
+\input{acknowledgment}
+\input{reference}
+\input{appendix}
+
+% ----------------------------------------------------------------------
+\end{document}

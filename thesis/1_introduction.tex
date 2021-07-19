@@ -1,0 +1,21 @@
+\chapter{Introduction}
+
+Let's say you are building a machine learning algorithm.
+You want to do binary classification.
+You would probably assume that the training set used for training is balanced.
+However, this is not always the case with real-world data.
+For example, let's say that you want to give appropriate treatment to a patient who is positive for a rare disease.
+While the majority of patients do not have the disease, the number of patients with rare diseases is so small that it is impossible to collect a huge amount of data.
+In such a case, you would want to make good use of the data of negative patients to get the characteristics of positive patients.
+Another example is the detection of abnormalities in factories.
+In a manufacturing plant, there are basically no abnormalities in the machines. As a result, there is very little data to indicate failure.
+This imbalance in data is a cause of performance degradation in learning algorithms.
+For example, with kNearest Neighbor, the probability that the nearest neighbor of a minority class case is a majority class case increases, and the error rate of the minority class tends to be higher. And that is an unacceptable degree.
+In order to deal with such a learning problem in the presence of class imbalance, we will experiment with methods using oversampling and undersampling.
+Furthermore, we propose an oversampling method and experimentally evaluate it with three existing methods.
+To address the problem of class imbalance in the UCI dataset\cite{UCI} of 4, a wide range of experimental evaluations were conducted using 4 methods, including the method proposed by the author.
+Chapter2 describes the UCI dataset\cite{UCI} used for the experimental methods and the oversampling and undersampling methods of 4. The proposed method is also included.
+In Chapter 3, we show the results of the experiments described in the previous chapter using figures and tables.
+In Chapter 4, we discuss various aspects of the results obtained in the previous chapter.
+In Chapter 5, I will discuss the conclusion of this study.
+

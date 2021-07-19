@@ -1,0 +1,18 @@
+{
+  "name": "tex-textlint",
+  "version": "1.0.0",
+  "description": "TeX auto calibration using textlint + prh",
+  "main": "index.js",
+  "config": {
+    "texpath": "main.tex"
+  },
+  "scripts": {
+    "textlint-check": "cp ${npm_package_config_texpath} output.txt && $(npm bin)/textlint output.txt && { rm output.txt ; exit 0 ; } || { rm output.txt ; exit 1 ; }",
+    "textlint-fix": "cp ${npm_package_config_texpath} output.txt && $(npm bin)/textlint --fix output.txt && cp output.txt ${npm_package_config_texpath} && { rm output.txt ; exit 0 ; } || { rm output.txt ; exit 1 ; }"
+  },
+  "author": "",
+  "devDependencies": {
+    "textlint": "^8.2.1",
+    "textlint-rule-prh": "^4.0.1"
+  }
+}

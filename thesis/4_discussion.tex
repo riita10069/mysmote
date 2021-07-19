@@ -1,0 +1,75 @@
+\chapter{Discussion}
+
+The classification of disproportionate data is necessary in every situation.
+For example, credit card fraud rates and positive rates of infectious diseases are extremely small percentages.
+It will become more and more common to use techniques such as machine learning and deep learning to solve these situations.
+In this study, we first used a two-dimensional artificial data set that can be visualized. After that, we actually used four real datasets for learning and inference.
+Then, we considered how to proceed with learning on imbalanced datasets in this study.
+One of the problems in learning is that when the majority class and the minority class are treated as equals, it is impossible to grasp the characteristics of the minority class.
+In order to solve this problem, we considered the possibility of using oversampling and undersampling.
+In addition, it is difficult to evaluate the model when using imbalance data sets.
+Even if the percentage of correct answers is high, it may not be able to correctly discriminate the minority class.
+Therefore, in this study, we decided to judge whether the model is good or bad mainly by using the AUC value\cite{ROC}.
+
+First, let's discuss the visualization of the Simple 2D Data Set.
+In this data set, it is easy to see that the orange class is the minority class.
+And since the minority data set is clustered on the right side, but the majority data set also appears on the right side, a normal adaptation of the model would probably give the majority class label to the cases on the right side as well.
+As you can see from the results, Without Pretreatment produced very impressive results in the correct answer rate category. It was a whopping 0.99100.
+However, the recall score was only 0.1724.
+What this means is that only 10 percent of the minority data is predicted to be minority.
+As predicted earlier, this model almost completely ignores the minority data. As a result, it recorded a low AUC value, not commensurate with the percentage of correct answers.
+The solution to this problem was the oversampling method.
+We will refer to the visualization of oversampling using Smote.
+It can be seen that we have succeeded in representing the characteristics of the minority data. The characteristics are expressed in a very linear manner.
+This means that for the cases on this line, the model will give the minority label with confidence.
+Looking at the Table of Result, we can see that the results are as expected.
+The result is that the recall is now 0.8621 and the AUC has risen sharply to 0.89536.
+This is because we labeled the points on the line as minority class.
+Accuracy also dropped to 0.92800, but not drastically.
+Precision, however, was only 0.1055. This means that of those predicted to be in the minority, only 10% of the cases actually belonged to the minority class.
+However, this is not a serious problem. However, this is not a serious problem, because there are so few minority cases in this data set.
+The distribution was 99 vs. 1, which is a worthwhile oversampling because it is 10 times more accurate than a random response.
+The next step was to use Tomek Links. As you can see from the visualization, there is not much meaningful undersampling.
+I think this is because there are not enough minority data to make the class boundaries stand out in the undersampling.
+The results clearly showed this expectation, and the AUC values were very low.
+The next step was to use the Combine method. This is a method that further highlights the existence of minority classes by using both Smote and Tomek Links undersampling.
+The visualization shows that there are more minority classes than in Smote.
+As a result, the recall increased further to 0.8966, and the AUC also increased accordingly to 0.90587.
+Next, we conducted an experiment on MySMOTE, the proposed method of this study.
+The aim of MySMOTE is to capture the characteristics of minority data only linearly, which is a problem of SMOTE.
+We thought that this method, with the addition of noise, would be able to show the trend of minority data in a wider range.
+Let's take a look at the actual visualized data set. It is not just the linear increase in data that we have seen so far. We thought that we would be able to determine the boundary more strongly because there are many minority class data scattered around the data.
+However, as a score, recall was the same as Smote. In this dataset, the increased score due to the addition of noise did not seem to be of much use.
+
+Next, we will look at the table that shows the results of the German Credit Data Set.
+This is the result of using the first realistic data set.
+First, if we consider Smote, it increased the recall value significantly and raised the AUC significantly compared to the case where no oversampling or undersampling was used.
+This is similar to the simple two-dimensional data set described earlier.
+In addition, the precision was also increased by oversampling, which suggests that we have succeeded in grasping the features well.
+Next, when we consider Tomek Links, the results are the same as for the simple two-dimensional data set.
+However, in Combine with Smote, we were able to capture the features of the minority class more strongly than Smote, and the recall was further increased.
+However, the precision was reduced. As a result, the AUC value was almost zero. As a result, there was almost no change in the AUC value.
+Finally, the proposed method of this study, MySMOTE, was used. This method succeeded in increasing the recall significantly, as expected.
+However, due to the decrease in precision, the AUC was slightly lower than that of Smote and Combine.
+Although we were not able to improve the AUC itself, we were able to increase the recall more than Smote, so we were successful in labeling the minority class that did not ride in a linear fashion.
+However, the noise resulted in many of the majority classes being labeled as minority classes.
+
+Next, we will refer to the table that shows the results of Haberman's Survival Data Set.
+This table shows a slightly different result than the German Credit Data Set.
+First, let's consider Smote. There was no improvement in AUC. However, the recalls are definitely improved.
+Let's also consider Tomek Links. In this dataset, they have succeeded in improving the AUC.
+In the Haberman's Survival Data Set, we were able to capture the characteristics of the minority class by undersampling rather than oversampling.
+And when Combine is used, the AUC is dramatically improved.
+Finally, there is MySMOTE, the proposed method of this study. MySMOTE, the proposed method of this study, was able to obtain higher AUC than that of Smote. However, it did not seem to work as well as Combine.
+
+Next, we refer to the table that shows the results of the Census-Income (KDD) Data Set.
+In this data set, the AUC did not change much by oversampling or undersampling.
+The reason is obvious. The reason is obvious: the value of recall is 0.9503 even without preprocessing, which is very high.
+The process of oversampling and undersampling is designed to work in favor of minority classes. This is not an effective method for this data set since the aim is to increase the recall.
+
+Next, we refer to the table showing the results of the Blood Transfusion Service Center Data Set.
+This data set also shows very interesting results.
+The Smote and Tomek Links showed little improvement in AUC, but Combine and MySMOTE showed a large improvement in AUC.
+The improvement was not in precision, but in recall.
+This indicates that the linear oversampling of SMOTE did not identify many cases as minority class.
+Combining with undersampling and adding noise resulted in the correct identification of the minority class.
