@@ -75,9 +75,8 @@ class BaseSMOTE(BaseOverSampler):
             steps = getattr(sparse, sparse_func)(steps)
             X_new = X[rows] + steps.multiply(diffs)
         else:
-            print("my smote")
             X_new = X[rows] + steps * diffs
-            X_new = X_new + (np.random.rand(X[rows].shape[0], X[rows].shape[1]) * self.my_smote * self.weight)
+            X_new = X_new + (np.random.randn(X[rows].shape[0], X[rows].shape[1]) * self.my_smote * self.weight)
 
         return X_new.astype(X.dtype)
 
