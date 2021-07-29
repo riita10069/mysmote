@@ -1,11 +1,1 @@
-A fundamental problem in supervised machine learning is class imbalance.
-For example, consider a training set consisting of 100 cases of two classes.
-Consider a training set consisting of 100 cases of two classes, where 5 cases belong to the positive class and 95 cases belong to the negative class.
-The 95 cases belong to the negative class. The positive class is the minority class and is substantially smaller than the majority class.
-When the classifier tries to learn to distinguish between the two classes, it will have difficulty learning well because there will not be a sufficient number of positive examples.
-This is because negative examples dominate. There are various ways to solve this problem.
-There are two main methods.
-The first is the method of weighting the cases on the positive cases.
-The second is to change the data set itself in preprocessing.
-In this study, we will consider in depth the method of changing the data set itself in preprocessing.
-There are two approaches: oversampling, which increases the number of cases in the minority data, and undersampling, which decreases the number of cases in the majority data.
+A fundamental problem in supervised machine learning is class imbalance. For example, consider a training set consisting of 100 cases of two classes, where five cases belong to the positive class and 95 cases belong to the negative class. The positive class is the minority class, and it is substantially smaller than the majority class of positive cases. When a classifier tries to learn to distinguish between the two classes, it will have difficulty to learn well because there are not a sufficiently large number of positive examples. Various methods have been proposed to address this problem. Here, we investigate methods of oversampling the minority class, undersampling the majority class, and a combination of both. Oversampling increases the number of cases in the minority class, whereas undersampling decreases the number of cases in the majority class. As state-of-the-art methods, we investigated SMOTE as an oversampling method, Tomek links as an undersampling method, and a combination of both. We also propose a modification of SMOTE, which is called MySMOTE. All methods are compared on five benchmark data sets. Our experiments did not reveal a clearly preferable method. However, MySMOTE is an interesting extension of the standard SMOTE algorithm.  

@@ -1,21 +1,14 @@
 \chapter{Materials and methods}
 \section{Data Sets}
 
-In this thesis, I will experiment with data sets where one class is significantly less than the other.
-There are four datasets that I actually experimented with.
-The first one I used was a simple dataset. This is a two-dimensional data set that can be easily visualized.
-First, I will focus on visualizing and understanding the data.
-Next, I will use a real data set. I use the UCI Machine Learning Repository\cite{UCI} for the data.
+In this thesis, I consider binary classification tasks, that is, supervised learning problems that involve only two classes, which are denoted as the positive and the negative class, respectively. I carried out experiments with data sets where one class is significantly smaller than the other. There are four datasets that I actually experimented with. 
 
-The actual data used were four.
-We used four datasets: German Credit Dataset, HabermanDataset, Census-Income (KDD) Dataset, and Blood Transfusion Service Center Dataset.
-The specifics of the datasets are described below.
+The first data set is a synthetically generated toy dataset. This is a two-dimensional data set that can be easily visualized. First, I focused on visualizing and understanding the data. Next, I used four real data sets from the UCI Machine Learning Repository \cite{UCI}. We used four real-world datasets: German Credit Dataset, HabermanDataset, Census-Income (KDD) Dataset, and Blood Transfusion Service Center Dataset. The specifics of the datasets are described below.
 
 \subsection{Simple 2D Data Set}
-Create a random two-class classification problem.
-It was generated using scikit-learn datasets make classification
-The number of samples is set to 10000, The number of informative features is two,
-The number of clusters per class is two, the ratio of classes is biased 99 to 1, and the clusters are put on the vertices of a hypercube.
+This data set was generated using scikit-learn datasets make classification.
+The number of samples is set to 10000, the number of informative features is two,
+the number of clusters per class is two, the ratio of classes is biased 99 to 1, and the clusters are put on the vertices of a hypercube.
 
 For actual visualization, see Fig. 2.1.
 \begin{center}
@@ -28,50 +21,30 @@ For actual visualization, see Fig. 2.1.
     \end{figure*}
 \end{center}
 
+
+
 \subsection{German Credit Dataset}
-
-The German Credit Dataset was downloaded from the UCI Machine Learning Repository, a web site that maintains many real datasets\cite{German}. 
-
-The data set contains 1000 entries with 20 prepared category/symbol attributes
-In this data set, each entry represents a person who receives credit from a bank. Each person is classified as a good or bad credit risk according to a set of attributes. We estimate it.
-The data set is skewed with 700 out of 1000 entries for good credit risk.
+The German Credit Dataset was downloaded from the UCI Machine Learning Repository, a web site that maintains many real datasets \cite{German}. The data set contains 1000 entries with 20 prepared category/symbol attributes. In this data set, each entry represents a person who receives credit from a bank. Each person is classified as having a good or bad credit risk according to a set of attributes. The data set is skewed with 700 out of 1000 entries for good credit risk. 
 
 
 \subsection{Haberman's Survival Data Set}
+The Haberman's Survival Data Set was downloaded from the UCI Machine Learning Repository\cite{Haberman}. The dataset contains case studies of survival of patients undergoing surgery for breast cancer conducted at the Billings Hospital of the University of Chicago between 1958 and 1970. It has 306 cases and three feature sets. The class label is a binary status indicating 5-year survival after surgery. It is a biased data set with 225 patients that died within 5 years compared to 81 patients that did not.
 
-Haberman's Survival Data Set was similarly downloaded from the UCI Machine Learning Repository\cite{Haberman}.
-
-The dataset contains case studies of survival of patients undergoing surgery for breast cancer conducted at the Billings Hospital of the University of Chicago between 1958 and 1970.
-It has 306 data counts and three feature sets.
-Estimate whether the patient died within 5 years.
-It is a biased data set with 225 data that died within 5 years compared to 81 data that did not.
 
 \subsection{Census-Income (KDD) Data Set}
+The Census-Income (KDD) Data Set was downloaded from the UCI Machine Learning Repository\cite{Census}. This dataset contains weighted census data drawn from the 1994 and 1995 Current Population Surveys conducted by the U.S. Census Bureau. The data set includes 41 demographic and employment related variables. All categorical variables can be transformed into a Sparse One-Hot vector. What we estimate is whether the income is greater than 50K or not. We have a very large number of cases, $n = 32561$, and the data set is biased with 24720 cases being less than 50K.
 
-The Census-Income (KDD) Data Set was similarly downloaded from the UCI Machine Learning Repository\cite{Census}.
-This dataset contains weighted census data drawn from the 1994 and 1995 Current Population Surveys conducted by the U.S. Census Bureau. The data includes 41 demographic and employment related variables.
-All categorical variables can be transformed into a Sparse One-Hot vector.
-What we estimate is whether the income is greater than 50K or not.
-We have a very large number of data, 32561, and the data is biased with 24720 being less than 50K.
 
 \subsection{Blood Transfusion Service Center Data Set}
-
-The Blood Transfusion Service Center Data Set was similarly downloaded from the UCI Machine Learning Repository\cite{Blood}.
-
-This dataset contains data obtained from a blood transfusion service center located in Hsin Chu, Taiwan.
-The center gives its blood transfusion service bus to one of the universities in Hsin Chu and collects donated blood about every three months. To build the marketing model which is a modified version of RFM, we randomly selected 748 donors from the donor database. For these 748 donor data, four variables were included. These are used to estimate whether a given donor has donated blood or not.
-
-The data set is skewed, with 178 people who have donated blood compared to 570 who have not done so.
+The Blood Transfusion Service Center Data Set was similarly downloaded from the UCI Machine Learning Repository \cite{Blood}. This dataset contains data obtained from a blood transfusion service center located in Hsin Chu, Taiwan. The center gives its blood transfusion service bus to one of the universities in Hsin Chu and collects donated blood about every three months. To build the FRMTC model marketing model which is a modified version of RFM, we randomly selected 748 donors from the donor database. For these 748 donor data, four variables were included. These are used to estimate whether a given donor has donated blood or not. The data set is skewed, with 178 people who have donated blood compared to 570 who have not done so.
 \clearpage
 
 
 \section{Methods}
 \subsection{SMOTE}
-
 SMOTE is one method of random oversampling that increases the number of minority cases by randomly replicating the minority cases\cite{SMOTE}.
 
-Below are the biased datasets.
-Blue is the minority data set and orange is the majority data set.This can be seen in Fig. 2.2.
+Here, I will explain how SMOTE works using a simplified example. Below are the biased datasets. Blue is the minority data set and orange is the majority data set. This can be seen in Fig. 2.2.
 
 \begin{center}
     \begin{figure*}[ht]
@@ -99,15 +72,15 @@ Select one number group case. It's called $m_a$. This can be seen in Fig. 2.3.
 
 \clearpage
 
-Extract k data using the k-nearest neighbor method.
-Calculate the degree of similarity between cases for a set of values of explanatory variables.
-The similarity between vectors is calculated using the Euclidean distance
+Extract $k$ cases using the $k$-nearest neighbor method. Calculate the degree of similarity between cases for a set of values of explanatory variables. The similarity between vectors is calculated using the Euclidean distance.
 
-The j-th elements of $m_a$ and $m_i$ are written as $a_j$ and $i_j$, respectively.
+The $j$-th elements of $m_a$ and $m_i$ are written as $a_j$ and $i_j$, respectively.
 $$
-dis(m_a, m_i) = \Sigma_j(a_j - i_j)^2
+dis(m_a, m_i) = \sqrt{\Sigma_j(a_j - i_j)^2}
 $$
-The figure below shows the k nearest neighbors painted in green. Figs2.4
+
+
+The figure below shows the $k$ nearest neighbors painted in green (Fig. 2.4).
 
 \begin{center}
     \begin{figure*}[ht]
@@ -121,9 +94,7 @@ The figure below shows the k nearest neighbors painted in green. Figs2.4
 
 \clearpage
 
-Randomly select one of the k nearest neighbors.
-In other words, pick one of the data that is colored green. Randomly.
-I painted the selected one yellow.Figs2.5
+Randomly select one of the $k$ nearest neighbors. In other words, pick one of the cases that is colored green. I painted the selected one yellow (Figs 2.5).
 
 \begin{center}
     \begin{figure*}[ht]
@@ -148,18 +119,12 @@ Connect the first data you selected with the data you just selected with a strai
     \end{figure*}
 \end{center}
 
-It then generates some new data on that line.
-This is the data that is generated by oversampling.
-The position of the data on the line is completely random.
+SMOTE then generates some new data on that line. This is the data that is generated by oversampling. The position of the data on the line is completely random. 
 
 \clearpage
 \subsection{Tomek-links}
-
-One method of undersampling, which removes noisy samples, is to reduce the majority of the data set from a combination called Tomek Links\cite{TomekLinks}.
-
-The algorithm is described below.
-Below is a biased data set.
-Blue is the minority data set and orange is the majority data set.
+Tomek-links is one method of undersampling, which removes noisy samples, is to reduce some cases from the majority class\cite{TomekLinks}.
+The algorithm is described below. Below is a biased data set. Blue is the minority class  and orange is the majority class.
 
 \begin{center}
     \begin{figure*}[ht]
@@ -176,6 +141,7 @@ Blue is the minority data set and orange is the majority data set.
 Tomek links are pairs of $x$ and $y$ such that there is no case $z$ in the dataset that satisfies $\delta(x, z) < \delta(x, y)$ or $\delta(y, z) < \delta(y, x)$.
 However, we define $\delta(x, y)$ to be the distance between the minority case $x$ and the majority case $y$.
 
+
 \begin{center}
     \begin{figure*}[ht]
         \caption{TOMEK-LINKS: Show the tomek-links.}
@@ -188,7 +154,7 @@ However, we define $\delta(x, y)$ to be the distance between the minority case $
 
 \clearpage
 
-Delete the majority of data from these tomek links.
+Delete the cases of the majority class from these Tomek links.
 
 \begin{center}
     \begin{figure*}[ht]
@@ -200,23 +166,16 @@ Delete the majority of data from these tomek links.
     \end{figure*}
 \end{center}
 
-This process is repeated until there are no more two samples that are nearest neighbors of each other.
-It prevents the majority from inferring that the training data has too much majority data, even if it has the characteristics of minority data.
-
+This process is repeated until there are no more two samples that are nearest neighbors of each other.　It prevents the majority from inferring that the training data has too much majority data, even if it has the characteristics of minority data.　
 \clearpage
 
 \subsection{SMOTE + Tomek Combine}
-In SMOTE + Tomek Combine, SMOTE and Tomek links are combined and over- and under-sampled.
+In the method called ``SMOTE + Tomek Combine'', SMOTE and Tomek links are combined for simultaneous over- and under-sampling.
 
-\subsection{MySMOTE}
 
-MySMOTE is an improved version of SMOTE.
-
-Using a traditional SMOTE produces a linear data set.
-In other words, linear data set is a straight line of data set
-The boundaries between each class become blurred.
-So, instead of sampling data on a straight line, I add noise and sampling data collectively.
-The following is a description of the algorithm used by MySMOTE to perform oversampling.
+\subsection{New method: MySMOTE}
+We propose a new method, called MySMOTE, which is an improved version of SMOTE. 
+Using a traditional SMOTE produces a linear data set.In other words, linear data set is a straight line of data set.The boundaries between each class become blurred.So, instead of sampling data on a straight line, I add noise and sampling data collectively.The following is a description of the algorithm used by MySMOTE to perform oversampling.
 
 \begin{center}
     \begin{figure*}[ht]
@@ -228,7 +187,7 @@ The following is a description of the algorithm used by MySMOTE to perform overs
     \end{figure*}
 \end{center}
 
-Here is an explanation of the above variables.\\
+Here is an explanation of the above variables.\\ 
 $r$: This is a random value from $0$ to $1$ chosen uniformly.
 This is the value used to determine the position of the new point generated between $m_a$ and $m_r$.
 Noise is added to the point such that $m_a:m_r=r:1-r$, which is the new point.\\
@@ -250,13 +209,12 @@ Add $\bm{v}$ to the vector from the origin to its interior point.
 In this way, we can now oversample not only the straight line connecting $m_a$ and $m_r$, but also the surrounding area.
 By doing so, we aim to create a model that can determine the minority class for cases near the line connecting $m_a$ and $m_r$.
 
-\section{What kind of model to experiment?}
-As explained in the previous section, I train on a biased data set with some data preprocessing such as oversampling or undersampling.
-I use scikit-learn to ensure that the learning is equal under all conditions. Decision Tree is used as the machine learning algorithm.
-It is easy to think that decision trees are confusing when learning imbalanced data. This is because it removes branches that are considered to be too specialized and labels the new leaf nodes with the dominant class.
-It becomes more likely that the majority class will become the dominant class of these leaf nodes, and it will not be able to capture the characteristics of the minority class.
-To see if such a problem can be solved using oversampling or undersampling, a decision tree is used.
-The details of the actual model used are as follows.
+
+
+\section{Classification model: decision trees}
+As explained in the previous section, I trained on biased data sets with some data preprocessing such as oversampling or undersampling. I used scikit-learn to ensure that the learning is equal under all conditions. Decision Tree was used as the machine learning algorithm. 
+
+It is easy to think that decision trees are confused when learning from imbalanced data. This is because it removes branches that are considered to be too specialized and labels the new leaf nodes with the dominant class. It becomes more likely that the majority class will become the dominant class of these leaf nodes, and it will not be able to capture the characteristics of the minority class. To see if such a problem can be solved using oversampling or undersampling, a decision tree is used. The details of the actual model used are as follows. 
 
 \begin{lstlisting}[caption=DecisionTreeClassifier,label=DecisionTreeClassifier]
 sklearn.tree.DecisionTreeClassifier(*,
@@ -276,8 +234,7 @@ sklearn.tree.DecisionTreeClassifier(*,
 )
 \end{lstlisting}
 
-
-\section{How to evaluate the model?}
+\section{Performance evaluation}
 A very commonly used evaluation metric for machine learning models is accuracy.
 An index to determine how well the answer matches the overall prediction result. See below for the calculation formula.
 $$
@@ -285,13 +242,8 @@ Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
 $$
 And, $TP$ is the number of True Positive, $TN$ is the number of True Negative, $FP$ is the number of False Positive, and $FN$ is the number of False Negative cases. This section uses such an abbreviation.
 
-Accuracy is an unreliable metric in imbalanced data.
-This is because they can simply produce a high score.
-For example, consfider a data set where 80 percent of the data is in the majority class and 20 percent in the minority class. If we have a model that labels all the data as majority class, the accuracy of the model will be 0.8.
-This number is high, but it does not mean that this model is meaningless.
-As the class distribution changes, so do these metrics, even if the performance of the underlying classifier does not change.
-So it would be more interesting to use a performance metric that separates out the errors (or hits) that occur in each class.
-In terms of these factors, I will use the AUC index\cite{ROC}.
+Accuracy is an unreliable metric in imbalanced data. This is because they can simply produce a high score. For example, consider a data set where 80 percent of the data is in the majority class and 20 percent in the minority class. If we have a model that labels all the cases as members from the majority class, the accuracy of the model will be 0.8. This number is high, but it does not mean that this model is actually good. As the class distribution changes, so do these metrics, even if the performance of the underlying classifier does not change. So it would be more interesting to use a performance metric that separates out the errors (or hits) that occur in each class.
+In terms of these factors, I will use the AUC \cite{ROC}. 
 
 The term AUC comes from Area Under the Curve.
 The curve is the ROC curve, and the area of the lower right part is called the AUC.
