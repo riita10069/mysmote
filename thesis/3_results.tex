@@ -1,10 +1,8 @@
 \chapter{Results}
+\section{Visualizing Simple 2D Data Set}
+This simple two-dimensional data can be visualized. 
 
-\section{Results of various oversamplings and undersamplings}
-This simple two-dimensional data can be visualized. The Results is following.
-
-\subsection{Visualizing Simple 2D Data Set}
-\subsubsection{Visualizing The Data Set}
+\subsection{Visualizing The Data Set}
 Visualize a simple two-dimensional dataset that has been created.
 
 \begin{center}
@@ -18,8 +16,8 @@ Visualize a simple two-dimensional dataset that has been created.
 \end{center}
 
 \clearpage
-\subsubsection{Visualizing SMOTE}
-As a preprocessing step, using SMOTE, and the data set looked like this.
+\subsection{Visualizing SMOTE}
+As a preprocessing step, using SMOTE , and the data set looked like this.
 
 \begin{center}
     \begin{figure*}[ht]
@@ -30,10 +28,11 @@ As a preprocessing step, using SMOTE, and the data set looked like this.
         \end{center}
     \end{figure*}
 \end{center}
+
 The linearly increasing data set shows the characteristics of the minority data.
 
 \clearpage
-\subsubsection{Visualizing Tomek Links}
+\subsection{Visualizing Tomek Links}
 Using undersampling with Tomek Links as preprocessing, the data set looked like this
 
 \begin{center}
@@ -46,11 +45,10 @@ Using undersampling with Tomek Links as preprocessing, the data set looked like 
     \end{figure*}
 \end{center}
 
-I was not able to capture the features very effectively.
-It may have been due to too much bias.
+I was not able to capture the features very effectively. It may have been due to too much bias.
 
 \clearpage
-\subsubsection{Visualizing Smote and Tomek Links Combine}
+\subsection{Visualizing Smote and Tomek Links Combine}
 With both Smote and undersampling using Tomek Links as preprocessing, the data set looked like this
 \begin{center}
     \begin{figure*}[ht]
@@ -61,12 +59,12 @@ With both Smote and undersampling using Tomek Links as preprocessing, the data s
         \end{center}
     \end{figure*}
 \end{center}
-A few are strongly characterized by data that are not only linear.
-It is thought that they appear more effectively when combined.
+
+A few are strongly characterized by data that are not only linear. It is thought that they appear more effectively when combined.
 
 \clearpage
-\subsubsection{Visualizing MySMOTE}
-When using MySMOTE instead of Smote as preprocessing, the data set looked like this
+\subsection{Visualizing MySMOTE}
+When using MySMOTE instead of SMOTE as preprocessing, the data set looked like this.
 
 \begin{center}
     \begin{figure*}[ht]
@@ -80,8 +78,8 @@ When using MySMOTE instead of Smote as preprocessing, the data set looked like t
 
 \clearpage
 
-\subsection{The Table of Result}
-\subsubsection{Simple 2D Data Set}
+\section{Classification results}
+\subsection{Simple 2D Data Set}
 The actual results of adapting the model are shown below.
 \begin{table}[H]
     \caption{Classification Result Simple 2D Dataset Table}
@@ -98,7 +96,7 @@ The actual results of adapting the model are shown below.
 \end{table}
 
 
-\subsubsection{German Credit Dataset}
+\subsection{German Credit Dataset}
 
 \begin{table}[H]
     \caption{Classification Result German Credit Dataset}
@@ -115,7 +113,7 @@ The actual results of adapting the model are shown below.
 \end{table}
 
 
-\subsubsection{Haberman's Survival Data Set}
+\subsection{Haberman's Survival Data Set}
 
 \begin{table}[H]
     \caption{Classification Result Haberman's Survival Dataset}
@@ -131,7 +129,7 @@ The actual results of adapting the model are shown below.
     \end{tabular}
 \end{table}
 
-\subsubsection{Census-Income (KDD) Data Set}
+\subsection{Census-Income (KDD) Data Set}
 
 \begin{table}[H]
     \caption{Classification Result Census-Income (KDD) Data Set}
@@ -148,7 +146,7 @@ The actual results of adapting the model are shown below.
 \end{table}
 
 
-\subsubsection{Blood Transfusion Service Center Data Set}
+\subsection{Blood Transfusion Service Center Data Set}
 
 \begin{table}[H]
     \caption{Classification Result Blood Transfusion Service Center Data Set}
@@ -163,4 +161,3 @@ The actual results of adapting the model are shown below.
         MySMOTE & 0.69333 & 0.4667 & 0.6667 & 0.68519 \\ \hline
     \end{tabular}
 \end{table}
-
